@@ -11,17 +11,17 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>B58BAE61EAE6B74B9926FFDCEC016C3CFE44ED7D</key>
-		<string>github.com:Kureev/react-native-navbar.git</string>
+		<string>github.com:APSL/react-native-navbar.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>examples/CustomElements/customElements.xcodeproj</string>
+	<string>examples/customElements/customElements.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B58BAE61EAE6B74B9926FFDCEC016C3CFE44ED7D</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:Kureev/react-native-navbar.git</string>
+	<string>github.com:APSL/react-native-navbar.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

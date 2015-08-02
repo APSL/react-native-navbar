@@ -91,8 +91,8 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 - `titleColor` (String) - Color of the navbar title (hex/rgb(a))
 - `buttonsColor` (String) - Color of the buttons
 - `backgroundColor` (String) - Color of the navbar's background
-- `onPrev` (Function) - Callback on left navbar button click
-- `onNext` (Function) - Callback on right navbar button click
+- `onPrev` (Function (navigator, route)) - Callback on left navbar button click
+- `onNext` (Function (navigator, route)) - Callback on right navbar button click
 - `hidePrev` (Boolean) - Should `prev` button be hidden or not
 - `prevTitle` (String) - Caption of the "back" button
 - `nextTitle` (String) - Caption of the "next" button
@@ -100,6 +100,7 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 - `customNext` (React.Element) - React element to use instead of standart next button
 - `customTitle` (React.Element) - React element to use instead of standart title
 - `statusBar` (String) - Color of the status bar (lightContent/default)
+- `shouldUpdate` (Boolean) - Whether or not the navbar will update during render. Set to true to allow for functionality such as updating the navbar title dynamically.
 
 ### Questions?
 Feel free to contact me in [twitter](https://twitter.com/kureevalexey) or [create an issue](https://github.com/Kureev/react-native-navbar/issues/new)

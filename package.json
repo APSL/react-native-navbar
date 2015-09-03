@@ -1,6 +1,6 @@
 {
   "name": "react-native-navbar",
-  "version": "0.7.0",
+  "version": "0.8.2",
   "description": "Simple customizable navbar component for react-native",
   "main": "index.js",
   "scripts": {
@@ -14,13 +14,13 @@
     "react-native",
     "navbar"
   ],
+  "peerDependencies": {
+    "react-native": ">= 0.9.0 || 0.10.0-rc"
+  },
   "author": "Alexey Kureev <kureev-mail@ya.ru> (https://github.com/Kureev)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Kureev/react-native-navbar/issues"
   },
-  "homepage": "https://github.com/Kureev/react-native-navbar",
-  "peerDependencies": {
-    "react-native": ">= 0.6.0"
-  }
+  "homepage": "https://github.com/Kureev/react-native-navbar"
 }

@@ -17,6 +17,8 @@
 npm install react-native-navbar
 ```
 
+**Warning!** From version `0.7.1` this package require `react-native` version 0.8 or higher!
+
 ### Usage example
 ```javascript
 var NavigationBar = require('react-native-navbar');
@@ -89,8 +91,9 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 ### Component props
 - `title` (String) - Title of the navbar
 - `titleColor` (String) - Color of the navbar title (hex/rgb(a))
+- `backgroundStyle` (Object) - Style that would be applied to navbar background component. Navbar container is wrapped by background container to allow customize those layers separately. In case you need to make this view transparent or change background color - this option for you
+- `style` (Object) - Style that would be applied to navbar container. That property is only about real container that wraps buttons and title
 - `buttonsColor` (String) - Color of the buttons
-- `backgroundColor` (String) - Color of the navbar's background
 - `onPrev` (Function (navigator, route)) - Callback on left navbar button click
 - `onNext` (Function (navigator, route)) - Callback on right navbar button click
 - `hidePrev` (Boolean) - Should `prev` button be hidden or not
@@ -100,7 +103,6 @@ var navigationBar = <NavigationBar customTitle={<CustomTitle />} />;
 - `customNext` (React.Element) - React element to use instead of standart next button
 - `customTitle` (React.Element) - React element to use instead of standart title
 - `statusBar` (String) - Color of the status bar (lightContent/default)
-- `shouldUpdate` (Boolean) - Whether or not the navbar will update during render. Set to true to allow for functionality such as updating the navbar title dynamically.
 
 ### Questions?
 Feel free to contact me in [twitter](https://twitter.com/kureevalexey) or [create an issue](https://github.com/Kureev/react-native-navbar/issues/new)

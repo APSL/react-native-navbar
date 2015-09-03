@@ -1,4 +1,5 @@
 const React = require('react-native');
+const styles = require('./styles');
 const {
   PixelRatio,
   StatusBarIOS,
@@ -8,72 +9,18 @@ const {
   View
 } = React;
 
-const NAV_BAR_HEIGHT = 44;
-const STATUS_BAR_HEIGHT = 20;
-const NAV_HEIGHT = NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT;
-
-const styles = StyleSheet.create({
-  navBarContainer: {
-    height: NAV_HEIGHT,
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    paddingBottom: 5,
-    borderBottomColor: 'rgba(0, 0, 0, 0.5)',
-    borderBottomWidth: 1 / PixelRatio.get(),
-    justifyContent: 'space-between',
-  },
-  customTitle: {
-    position: 'absolute',
-    alignItems: 'center',
-    bottom: 5,
-    left: 0,
-    right: 0,
-  },
-  navBarText: {
-    fontSize: 16,
-    marginVertical: 10,
-    flex: 2,
-    textAlign: 'center',
-  },
-  navBarTitleText: {
-    color: '#373e4d',
-    fontWeight: '500',
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 15,
-  },
-  navBarLeftButton: {
-    paddingLeft: 10,
-  },
-  navBarRightButton: {
-    paddingRight: 10,
-  },
-  navBarButtonText: {
-    color: '#5890ff',
-  },
-});
-
 const NavigationBar = React.createClass({
 
   propTypes: {
     navigator: React.PropTypes.object,
     route: React.PropTypes.object,
-    shouldUpdate: React.PropTypes.bool,
-  },
-
-  getDefaultProps: function() {
-    return {
-      shouldUpdate: false,
-    };
   },
 
   /*
    * If there are no routes in the stack, `hidePrev` isn't provided or false,
    * and we haven't received `onPrev` click handler, return true
    */
-  prevButtonShouldBeHidden: function() {
+  prevButtonShouldBeHidden() {
     const {
       onPrev,
       hidePrev,
@@ -91,7 +38,7 @@ const NavigationBar = React.createClass({
   /**
    * Describes how we get a left button in the navbar
    */
-  getLeftButtonElement: function() {
+  getLeftButtonElement() {
     const {
       onPrev,
       prevTitle,
@@ -106,7 +53,7 @@ const NavigationBar = React.createClass({
      * it's clone with additional attributes
      */
     if (customPrev) {
-      return React.addons.cloneWithProps(customPrev, { navigator, route, });
+      return React.cloneElement(customPrev, { navigator, route, });
     }
 
     /*
@@ -124,7 +71,7 @@ const NavigationBar = React.createClass({
     /*
      * holds a ref to onPress which either be navigator.pop or a handler
      */
-    var onPress = navigator.pop;
+    let onPress = navigator.pop;
 
     if (onPrev) {
       //we are passing navigator and route to onPrev handler
@@ -145,7 +92,7 @@ const NavigationBar = React.createClass({
   /*
    * Describe how we get a title for the navbar
    */
-  getTitleElement: function() {
+  getTitleElement() {
     const {
       title,
       titleColor,
@@ -160,7 +107,7 @@ const NavigationBar = React.createClass({
     if (customTitle) {
       return (
         <View style={styles.customTitle}>
-          {React.addons.cloneWithProps(customTitle, { navigator, route })}
+          {React.cloneElement(customTitle, { navigator, route, })}
         </View>
       );
     }
@@ -182,7 +129,7 @@ const NavigationBar = React.createClass({
     );
   },
 
-  getRightButtonElement: function() {
+  getRightButtonElement() {
     const {
       onNext,
       nextTitle,
@@ -197,7 +144,7 @@ const NavigationBar = React.createClass({
      * it's clone with additional attributes
      */
     if (customNext) {
-      return React.addons.cloneWithProps(customNext, { navigator, route, });
+      return React.cloneElement(customNext, { navigator, route, });
     }
 
     /*
@@ -217,7 +164,7 @@ const NavigationBar = React.createClass({
     return (
       <TouchableOpacity onPress={() => onNext(navigator, route)}>
         <View style={styles.navBarRightButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText, customStyle]}>
+          <Text style={[styles.navBarText, styles.navBarButtonText, customStyle, ]}>
             {nextTitle || 'Next'}
           </Text>
         </View>
@@ -225,23 +172,22 @@ const NavigationBar = React.createClass({
     );
   },
 
-  render: function() {
-
+  render() {
     if (this.props.statusBar === 'lightContent') {
       StatusBarIOS.setStyle('light-content', false);
     } else if (this.props.statusBar === 'default') {
       StatusBarIOS.setStyle('default', false);
     }
 
-    const { backgroundColor, style } = this.props;
-    const backgroundStyle = backgroundColor ?
-      { backgroundColor, } : {};
+    const { style, backgroundStyle } = this.props;
 
     return (
-      <View style={[styles.navBarContainer, backgroundStyle, style, ]}>
-        {this.getTitleElement()}
-        {this.getLeftButtonElement()}
-        {this.getRightButtonElement()}
+      <View style={[styles.navBarContainer, backgroundStyle, ]}>
+        <View style={[styles.navBar, style, ]}>
+          {this.getTitleElement()}
+          {this.getLeftButtonElement()}
+          {this.getRightButtonElement()}
+        </View>
       </View>
     );
   },
